@@ -6,10 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cadastro de processo</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
-
+    <header class="tituloPagina">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3 class="card-title text-center">Cadastro de Contribuinte</h3><br>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
     <section>
         <div class="container">
@@ -99,17 +108,18 @@
                                 </div><br>
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <button class="btn btn-danger mb-3">Cancelar Cadastro</button>
+                                <button type="submit" class="btn btn-success mb-3">Realizar Cadastro</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </section>    
-    <footer>
-
-    </footer>
-    <div class="container-fluid">
-        <h1>teste 1</h1>
-    </div>
+    <footer></footer>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
