@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cadastro de processo</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <title>cadastro de processo</title>
 </head>
 <body>
     <header class="tituloPagina">
@@ -24,32 +24,32 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <form action="">
+                    <form action="recebeCadastroContribuinte.php" method="POST">
                         <div class="card">
                             <div class="card-header"><strong>Dados do Contribuinte</strong></div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label for="razaoSocial_pessoaFisica" class="form-label">Nome da Razão Social / Pessoa Física</label>
-                                        <input type="text" class="form-control" name="razaoSocial_pessoaFisica" id="razaoSocial_pessoaFisica">
+                                        <label for="razaoSocialPessoaFisica" class="form-label">Nome da Razão Social / Pessoa Física</label>
+                                        <input type="text" class="form-control" name="razaoSocialPessoaFisica" id="razaoSocialPessoaFisica">
                                     </div>
                                     <div class="col-sm-6">
-                                        <label for="nome_fantasia" class="form-label">Nome Fantasia</label><br>
-                                        <input type="text" class="form-control" name="nome_fantasia" id="nome_fantasia">
+                                        <label for="nomeFantasia" class="form-label">Nome Fantasia</label><br>
+                                        <input type="text" class="form-control" name="nomeFantasia" id="nomeFantasia">
                                     </div>
                                 </div><br>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label for="pessoa_fisicaJuridica" class="form-label">Pessoa Fiísica  / Jurídica</label>
-                                        <select class="form-select" name="pessoa_fisicaJuridica" id="pessoa_fisicaJuridica">
+                                        <label for="pessoaFisicaJuridica" class="form-label">Pessoa Fiísica  / Jurídica</label>
+                                        <select class="form-select" name="pessoaFisicaJuridica" id="pessoaFisicaJuridica">
                                             <option value="">Selecione</option>
-                                            <option value="">Fisica</option>
-                                            <option value="">Jurídica</option>
+                                            <option value="Fisica">Fisica</option>
+                                            <option value="Juridica">Jurídica</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-6">
-                                        <label for="cnpj_cpf" class="form-label">Cpf / Cnpj</label><br>
-                                        <input type="text" class="form-control" name="cnpj_cpf" id="cnpj_cpf">
+                                        <label for="cnpjCpf" class="form-label">Cpf / Cnpj</label><br>
+                                        <input type="text" class="form-control" name="cnpjCpf" id="cnpjCpf">
                                     </div>
                                 </div>
                             </div>
@@ -63,8 +63,8 @@
                                         <input type="text" class="form-control" name="cep" id="cep">
                                     </div>
                                     <div class="col-sm-8">
-                                        <label for="rua" class="form-label">Rua</label><br>
-                                        <input type="text" class="form-control" name="rua" id="rua">
+                                        <label for="logradouro" class="form-label">Rua</label><br>
+                                        <input type="text" class="form-control" name="logradouro" id="logradouro">
                                     </div>
                                     <div class="col-sm-2">
                                         <label for="numero" class="form-label">Numero</label><br>

@@ -2,12 +2,12 @@
 
 require 'config.php';
 
-$razaoSocial_pessoaFisica = filter_input(INPUT_POST,'razaoSocial_pessoaFisica');
-$nome_fantasia = filter_input(INPUT_POST,'nome_fantasia');
-$pessoa_fisicaJuridica = filter_input(INPUT_POST,'pessoa_fisicaJuridica');
-$cnpj_cpf = filter_input(INPUT_POST,'cnpj_cpf');
+$razaoSocialPessoaFisica = filter_input(INPUT_POST,'razaoSocialPessoaFisica');
+$nomeFantasia = filter_input(INPUT_POST,'nomeFantasia');
+$pessoaFisicaJuridica = filter_input(INPUT_POST,'pessoaFisicaJuridica');
+$cnpjCpf = filter_input(INPUT_POST,'cnpjCpf');
 $cep = filter_input(INPUT_POST,'cep');
-$rua = filter_input(INPUT_POST,'rua');
+$logradouro = filter_input(INPUT_POST,'logradouro');
 $numero = filter_input(INPUT_POST,'numero');
 $complemento = filter_input(INPUT_POST,'complemento');
 $uf = filter_input(INPUT_POST,'uf');
@@ -16,25 +16,27 @@ $bairro = filter_input(INPUT_POST,'bairro');
 $email = filter_input(INPUT_POST,'email');
 $telefone = filter_input(INPUT_POST,'telefone');
 
-if($razaoSocial_pessoaFisica && $nome_fantasia && $pessoa_fisicaJuridica && $cnpj_cpf && $cep && $rua && $uf && $municipio && $bairro && $email && $telefone )
+if($razaoSocialPessoaFisica && $nomeFantasia)
 {
+    // && $pessoaFisicaJuridica && $cnpjCpf && $cep && $rua && $uf && $municipio && $bairro && $email && $telefone
     //vericando se ja existe um email antes de inserir o novo registro, estou usando o prepare pq é um campo especifco na busca
-    $queryBuscaPorEmail = $conection->prepare("SELECT * FROM tb_contribuinte WHERE email = :email");
-    $queryBuscaPorEmail->bindValue(':email',$email);
-    $queryBuscaPorEmail->execute();
-    if($queryBuscaPorEmail->rowCount() === 0)
-    {
-        //apos fazer a veriicação acima, preprara-se a query para fazer a inserção dos dados
-        $queryBuscaPorEmail = $conection->prepare("INSERT INTO tb_contribuinte(razaoSocial_pessoaFisica, nome_fantasia, 
-        pessoa_fisicaJuridica, cnpj_cpf, cep, rua, numero, complemento, uf, municipio, bairro, email, telefone) 
-        values(:razaoSocial_pessoaFisica, :nome_fantasia, :pessoa_fisicaJuridica, :cnpj_cpf, :cep, :rua, :numero, :complemento, 
-        :uf, :municipio, :bairro, :email, :telefone)");
-        $queryBuscaPorEmail->bindValue(':razaoSocial_pessoaFisica',$razaoSocial_pessoaFisica);
-        $queryBuscaPorEmail->bindValue(':nome_fantasia', $nome_fantasia);
-        $queryBuscaPorEmail->bindValue(':pessoa_fisicaJuridic', $pessoa_fisicaJuridica);
-        $queryBuscaPorEmail->bindValue(':cnpj_cpf', $cnpj_cpf);
+    // $queryBuscaPorEmail = $conection->prepare("SELECT * FROM tb_contribuinte WHERE email = :email");
+    // $queryBuscaPorEmail->bindValue(':email',$email);
+    // $queryBuscaPorEmail->execute();
+    // if($queryBuscaPorEmail->rowCount() === 0)
+    // {
+        //apos fazer a verificação acima, preprara-se a query para fazer a inserção dos dados
+        $queryBuscaPorEmail = $conection->prepare("INSERT INTO tb_contribuinte(razaoSocialPessoaFisica,nomeFantasia,pessoaFisicaJuridica,cnpjCpf,cep,logradouro,numero,complemento,uf,municipio,bairro,email,telefone) 
+        VALUES (:razaoSocialPessoaFisica, :nomeFantasia, :pessoaFisicaJuridica, :cnpjCpf, :cep, :logradouro, :numero, :complemento, :uf, :municipio, :bairro, :email, :telefone)");
+
+        
+
+        $queryBuscaPorEmail->bindValue(':razaoSocialPessoaFisica',$razaoSocialPessoaFisica);
+        $queryBuscaPorEmail->bindValue(':nomeFantasia', $nomeFantasia);
+        $queryBuscaPorEmail->bindValue(':pessoaFisicaJuridica', $pessoaFisicaJuridica);
+        $queryBuscaPorEmail->bindValue(':cnpjCpf', $cnpjCpf);
         $queryBuscaPorEmail->bindValue(':cep', $cep);
-        $queryBuscaPorEmail->bindValue(':rua', $rua);
+        $queryBuscaPorEmail->bindValue(':logradouro', $logradouro);
         $queryBuscaPorEmail->bindValue(':numero', $numero);
         $queryBuscaPorEmail->bindValue(':complemento', $complemento);
         $queryBuscaPorEmail->bindValue(':uf', $uf);
@@ -43,15 +45,13 @@ if($razaoSocial_pessoaFisica && $nome_fantasia && $pessoa_fisicaJuridica && $cnp
         $queryBuscaPorEmail->bindValue(':email', $email);
         $queryBuscaPorEmail->bindValue(':telefone', $telefone);
         $queryBuscaPorEmail->execute();
-        header("Location:aviso.php");
-        exit;
-    }else{
-        header("Location:home.php");
-        exit;
-    }
+        
+        header("Location:listaContribuinte.php");
+        // var_dump($queryBuscaPorEmail);
+        print_r($queryBuscaPorEmail);
 }else{
     header("Location:home.php");
-    exit;
+    // exit;
 }
 
 
